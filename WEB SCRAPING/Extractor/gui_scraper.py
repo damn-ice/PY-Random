@@ -93,14 +93,15 @@ def processData(data, link, typ):
 
 def main():
     website_link = ent_website.get()
-    ent_website.delete(0, END)
-    data = getDataJs(website_link)
-    if data:
-        phone_data = extract(data, phone)
-        email_data = extract(data, email)
-        processData(phone_data, website_link, 'Phone')
-        processData(email_data, website_link, 'Email')
-        print_output("*****======== Done Scraping! ========*****\n Click on View or Check  'Results-GUI folder' for output....")
+    if website_link:
+        ent_website.delete(0, END)
+        data = getDataJs(website_link)
+        if data:
+            phone_data = extract(data, phone)
+            email_data = extract(data, email)
+            processData(phone_data, website_link, 'Phone')
+            processData(email_data, website_link, 'Email')
+            print_output("*****======== Done Scraping! ========*****\n Click on View or Check  'Results-GUI folder' for output....")
     
 
 window = Tk()
